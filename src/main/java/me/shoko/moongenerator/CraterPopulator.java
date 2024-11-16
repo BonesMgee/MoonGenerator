@@ -35,16 +35,17 @@ public class CraterPopulator extends BlockPopulator {
                 radius = random.nextInt(SMALL_CRATER_SIZE - MIN_CRATER_SIZE + 1) + MIN_CRATER_SIZE;
             }
 
-            Material powder = Material.GRAY_CONCRETE_POWDER;
+            Material blockType = Material.LIGHT_GRAY_CONCRETE_POWDER;
 
-            if (random.nextBoolean())
-                powder = Material.BLACK_CONCRETE_POWDER;
-
-            if (random.nextBoolean())
-                powder = Material.GRAVEL;
-
-            final Material blockType = powder;
-
+            int i = random.nextInt(3);
+            switch (i) {
+                case 1:
+                    blockType = Material.GRAY_CONCRETE_POWDER;
+                    break;
+                case 2:
+                    blockType = Material.GRAVEL;
+                    break;
+            }
 
             for (int x = -radius; x <= radius; x++) {
                 for (int y = -radius; y <= radius; y++) {
@@ -63,14 +64,14 @@ public class CraterPopulator extends BlockPopulator {
                             int xx = world.getBlockAt(position.toLocation(world)).getX();
                             int yy = world.getBlockAt(position.toLocation(world)).getY();
                             int zz = world.getBlockAt(position.toLocation(world)).getZ();
-                            if (y < radius / 2 && !world.getBlockAt((int) position.toLocation(world).getX(), (int) position.toLocation(world).getY() - 1, (int) position.toLocation(world).getZ()).getType().equals(Material.AIR) && !world.getBlockAt((int) position.toLocation(world).getX(), (int) position.toLocation(world).getY() - 1, (int) position.toLocation(world).getZ()).getType().equals(powder) && !world.getBlockAt((int) position.toLocation(world).getX(), (int) position.toLocation(world).getY() - 1, (int) position.toLocation(world).getZ()).getType().equals(Material.AIR)
+                            if (y < radius / 2 && !world.getBlockAt((int) position.toLocation(world).getX(), (int) position.toLocation(world).getY() - 1, (int) position.toLocation(world).getZ()).getType().equals(Material.AIR) && !world.getBlockAt((int) position.toLocation(world).getX(), (int) position.toLocation(world).getY() - 1, (int) position.toLocation(world).getZ()).getType().equals(blockType) && !world.getBlockAt((int) position.toLocation(world).getX(), (int) position.toLocation(world).getY() - 1, (int) position.toLocation(world).getZ()).getType().equals(Material.AIR)
                                     && !world.getBlockAt((int) position.toLocation(world).getX(), (int) position.toLocation(world).getY() - 1, (int) position.toLocation(world).getZ()).getType().equals(Material.BEDROCK)) {
 
                                 world.getBlockAt(xx, yy - 1, zz).setType(blockType, false);
                             }
 
 
-                            if (!world.getBlockAt((int) position.toLocation(world).getX(), (int) position.toLocation(world).getY() - 2, (int) position.toLocation(world).getZ()).getType().equals(Material.AIR) && !world.getBlockAt((int) position.toLocation(world).getX(), (int) position.toLocation(world).getY() - 2, (int) position.toLocation(world).getZ()).getType().equals(powder) && !world.getBlockAt((int) position.toLocation(world).getX(), (int) position.toLocation(world).getY() - 2, (int) position.toLocation(world).getZ()).getType().equals(Material.AIR)
+                            if (!world.getBlockAt((int) position.toLocation(world).getX(), (int) position.toLocation(world).getY() - 2, (int) position.toLocation(world).getZ()).getType().equals(Material.AIR) && !world.getBlockAt((int) position.toLocation(world).getX(), (int) position.toLocation(world).getY() - 2, (int) position.toLocation(world).getZ()).getType().equals(blockType) && !world.getBlockAt((int) position.toLocation(world).getX(), (int) position.toLocation(world).getY() - 2, (int) position.toLocation(world).getZ()).getType().equals(Material.AIR)
                                     && !world.getBlockAt((int) position.toLocation(world).getX(), (int) position.toLocation(world).getY() - 2, (int) position.toLocation(world).getZ()).getType().equals(Material.BEDROCK)) {
                                 world.getBlockAt(xx, yy - 2, zz).setType(blockType, false);
                             }

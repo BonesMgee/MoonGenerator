@@ -38,7 +38,9 @@ public class ChunkMoonGenerator extends ChunkGenerator {
                 if(currentHeight < 16) currentHeight = 16;
 
 
-                chunk.setBlock(X, currentHeight, Z, Material.DEAD_BRAIN_CORAL_BLOCK);
+                chunk.setBlock(X, currentHeight, Z, Material.LIGHT_GRAY_CONCRETE_POWDER);
+                chunk.setBlock(X, currentHeight - 1, Z, Material.LIGHT_GRAY_CONCRETE_POWDER);
+                currentHeight--;
                 if (random.nextInt(100) < 90) {
                     chunk.setBlock(X, currentHeight - 1, Z, Material.DEAD_BUBBLE_CORAL_BLOCK);
                 } else {
@@ -53,7 +55,7 @@ public class ChunkMoonGenerator extends ChunkGenerator {
                     } else if (i > currentHeight * 0.6) {
                         chunk.setBlock(X, i, Z, Material.DEAD_TUBE_CORAL_BLOCK);
                     } else if (i > currentHeight * 0.4) {
-                        chunk.setBlock(X, i, Z, Material.COBBLESTONE);
+                        chunk.setBlock(X, i, Z, Material.STONE);
                     } else if (i > currentHeight * 0.1) {
                         chunk.setBlock(X, i, Z, Material.PACKED_ICE);
                     } else {
@@ -67,7 +69,7 @@ public class ChunkMoonGenerator extends ChunkGenerator {
                 }
                 chunk.setBlock(X, 0, Z, Material.BEDROCK);
 
-                biome.setBiome(X, Z, Biome.DESERT);
+                biome.setBiome(X, Z, Biome.FROZEN_OCEAN);
             }
         }
         return chunk;
